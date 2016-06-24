@@ -1,4 +1,6 @@
 sudo: false
+# need this _and_ the matrix below
+language: nodejs
 # needed for npm-registry-couchapp / test/tap/registry.js
 env:
   - DEPLOY_VERSION=testing
