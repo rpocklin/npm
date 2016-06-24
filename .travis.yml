@@ -1,24 +1,25 @@
 sudo: false
 # need this _and_ the matrix below
 language: node_js
-# needed for npm-registry-couchapp / test/tap/registry.js
-env:
-  - DEPLOY_VERSION=testing
 matrix:
   include:
     # LTS is our most important target
     - node_js: "4"
       # only instrument coverage for LTS
-      env: INCLUDE_COVERAGE=true
+      env: DEPLOY_VERSION=testing INCLUDE_COVERAGE=true
     # next LTS and master is next most important
     - node_js: "6"
+      env: DEPLOY_VERSION=testing
     # still in LTS maintenance until fall 2016
     # (also still in wide use)
     - node_js: "0.10"
+      env: DEPLOY_VERSION=testing
     # will be unsupported as soon as 6 becomes LTS and 7 released
     - node_js: "5"
+      env: DEPLOY_VERSION=testing
     # technically in LTS / distros, unbeloved
     - node_js: "0.12"
+      env: DEPLOY_VERSION=testing
 before_install:
   - "node . install -g ."
   # required by test/tap/registry.js
